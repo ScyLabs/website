@@ -66,7 +66,13 @@ const Project = () => {
         <h1>{title}</h1>
         <ul className="text-sm flex">
           {skills.map((skill) => (
-            <li className="mx-4">{skill}</li>
+            <li
+              className="mx-4
+            
+          "
+            >
+              {skill}
+            </li>
           ))}
         </ul>
         <a href="#contact" className="contactme text-2xl">
