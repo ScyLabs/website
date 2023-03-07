@@ -2,41 +2,13 @@ import { useContractReads } from "wagmi";
 import { website } from "utils/contracts";
 import { useMemo } from "react";
 
-const FloatLine = () => {
-  const { data } = useContractReads({
-    contracts: [
-      {
-        ...website,
-        functionName: "title",
-      },
-      {
-        ...website,
-        functionName: "description",
-      },
-    ],
-  });
-  console.log("🚀 ~ file: floatline.tsx:18 ~ FloatLine ~ data", data);
-
-  const title = useMemo(() => {
-    const title: string = data && data[0] ? data[0].toString() : "";
-    return title.split("");
-  }, [data]);
-
+const FloatLine = ({ title }) => {
   return (
-    <div className="p-24  justify-center text-4xl md:text-6xl  h-screen">
-      <h1>
-        {title.map((t, i) => (
-          <span>
-            {t}
-            {t === "," && <br />}
-          </span>
-        ))}
-      </h1>
-      <div className="wrap">
-        {[...new Array(300)].map(() => (
-          <span className="c"></span>
-        ))}
-      </div>
+    <div className="p-24  justify-center text-4xl md:text-6xl">
+      <h1>{title}</h1>
+      <a href="#contact" className="contactme text-2xl">
+        Contact me
+      </a>
     </div>
   );
 };

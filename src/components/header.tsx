@@ -11,6 +11,7 @@ const StyledHeader = styled.header<{ isOpen: boolean }>`
   height: 100%;
   display;flex;
   position: fixed;
+  z-index: 10;
   transition: all 500ms ease-in-out;
   transform:translate(-100%);
   ${(props) => props.isOpen && `transform: translate(0)`}
@@ -26,6 +27,7 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: center;
   position: relative;
+  z-index: 10
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   li {
     //margin: 1rem 0;
@@ -92,7 +94,7 @@ const Header = () => {
           </div>
         </StyledNav>
       </StyledHeader>
-      <div className="p-4 fixed left-0 top-0">
+      <div className="p-4 fixed left-0 top-0 z-40">
         <Burger isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
       </div>
     </>

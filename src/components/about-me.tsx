@@ -3,6 +3,9 @@ import { website } from "utils/contracts";
 import { useContractReads } from "wagmi";
 import TagsCanvas from "react-tags-canvas";
 
+import styled from "styled-components";
+import ContentBox from "./content-box";
+
 const AboutMe = () => {
   const { data, error } = useContractReads({
     contracts: [
@@ -17,8 +20,6 @@ const AboutMe = () => {
     ],
   });
 
-  console.log("🚀 ~ file: about-me.tsx:18 ~ AboutMe ~ data", data);
-
   const [about, skills] = useMemo(() => {
     const about: string = data && data[0] ? data[0].toString() : "";
     const skills: any[] = data && data[1] ? data[1] : [];
@@ -27,14 +28,12 @@ const AboutMe = () => {
   }, [data]);
 
   return (
-    <div className="bg-bg1 p-8">
-      <h2 className="text-6xl mb-8">About me </h2>
-      <p>{about}</p>
-      {/*<TagsCanvas 
-      tags={skills.map(() => ({
-        value: 
-      })} />*/}
-    </div>
+    <ContentBox
+      content={about.split("\n").map((p) => (
+        <p className="block my-4">{p}</p>
+      ))}
+      title={"About me"}
+    />
   );
 };
 
